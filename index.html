@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Arslan Arshad | AI Researcher & Educator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+     <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0ea5e9;
+            --accent: #8b5cf6;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 15s infinite ease-in-out reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 50px) scale(1.1); }
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-label {
+            display: inline-block;
+            background: rgba(37,99,235,0.2);
+            border: 1px solid rgba(37,99,235,0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--white) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(37,99,235,0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(37,99,235,0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15,23,42,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: var(--white);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-label {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -56px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--light);
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+        
+        .timeline-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        
+        .timeline-content h3 {
+            color: var(--dark);
+            font-size: 1.4em;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .timeline-content li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(37,99,235,0.2);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            backdrop-filter: blur(0);
+            transition: backdrop-filter 0.3s;
+        }
+        
+        .project-card:hover .project-image::after {
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-content h3 {
+            color: var(--dark);
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+        
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(37,99,235,0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-links a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .project-links a:hover {
+            color: var(--primary-dark);
+        }
+        
+        /* Publications */
+        .publication-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary);
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .publication-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 40px rgba(37,99,235,0.15);
+        }
+        
+        .publication-card h3 {
+            color: var(--dark);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .publication-status {
+            display: inline-block;
+            background: rgba(139,92,246,0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .publication-card a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .publication-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .cert-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        .cert-card h3 {
+            color: var(--dark);
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .cert-year {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .cert-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .cert-card li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            color: var(--gray);
+            font-size: 0.95em;
+        }
+        
+        .cert-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(37,99,235,0.15);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8em;
+            color: var(--white);
+        }
+        
+        .contact-item h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .contact-item a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 100px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero-subtitle { font-size: 1.2em; }
+            .section-title { font-size: 2em; }
+            nav ul { gap: 15px; }
+            .projects-grid, .cert-grid { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">MA</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <span class="hero-label">🎓 Teaching Assistant & AI Researcher</span>
+            <h1>Muhammad Arslan Arshad</h1>
+            <p class="hero-subtitle">Computer Vision • Deep Learning • AI Education</p>
+            <p>AI researcher and practitioner with hands-on experience in computer vision and image restoration, including scene-text deblurring. Demonstrated expertise in developing hybrid CNN-ViT architectures and real-world research implementations. Actively seeking opportunities to expand into multimodal AI, contributing to cutting-edge research that bridges theory and practical applications in intelligent systems.</p>
+            <div class="cta-buttons">
+                <a href="#publications" class="btn btn-primary">View Research</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <div class="section-label">Career Journey</div>
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Academic excellence meets practical innovation</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Teaching Assistant</h3>
+                    <span class="timeline-date">Jan 2025 – Present | UET Lahore</span>
+                    <ul>
+                        <li>Leading lab sessions for Programming Fundamentals and Data Structures courses</li>
+                        <li>developed a secure exam system with fullscreen enforcement, tab-switch detection, and comprehensive admin controls.
+                        <a href="https://github.com/M-ArslanArshad/ExamGuard">GitHub→</a>
+                        </li>
+                        <li>Mentoring students in software development and algorithmic thinking</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI Research Intern</h3>
+                    <span class="timeline-date">Jun 2024 – Sep 2024 | KICS, UET Lahore</span>
+                    <ul>
+                        <li>Conducted research on vehicle classification using deep learning (VGG16/19, ResNet50, ViT)</li>
+                        <li>Achieved improved model accuracy through architecture optimization and hyperparameter tuning</li>
+                        <li>Developed classification pipeline for color, type, and make recognition</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Python & AI Instructor</h3>
+                    <span class="timeline-date">Oct 2023 – Dec 2023 | APTECH Computer Education</span>
+                    <ul>
+                        <li>Delivered comprehensive 3-month Python & AI curriculum</li>
+                        <li>Taught NumPy, Pandas, Matplotlib, and Machine Learning fundamentals</li>
+                        <li>Integrated real-world datasets with supervised learning projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <!-- Projects Section -->
+<section id="projects">
+    <div class="section-header">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Research implementations and practical tools</p>
+    </div>
+    
+    <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="assets/img/project1.png" alt="Hybrid CNN-ViT Deblurring" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="project-content">
+                <h3>Hybrid CNN-ViT Deblurring Model</h3>
+                <p>Novel architecture combining CNNs and Vision Transformers for restoring motion-blurred scene-text images using the real TextOCR dataset. Demonstrates research-level expertise in computer vision and AI.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">CNN</span>
+                    <span class="tech-tag">ViT</span>
+                    <span class="tech-tag">OpenCV</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/M-ArslanArshad/hybrid-cnn-vit-deblurring-summary">GitHub →</a>
+                    <a href="https://arxiv.org/pdf/2511.06087">Paper →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="assets/img/project2.jpg" alt="Car Accident Detection" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="project-content">
+                <h3>Car Accident Detection</h3>
+                <p>Real-time accident detection system using YOLO for traffic monitoring and emergency response. Highlights applied object detection and real-world computer vision impact.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">YOLO</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/M-ArslanArshad/car-accident-yolo">GitHub →</a>
+                    <a href="https://www.kaggle.com/code/marslanarshad/car-accident-detection-yolov5" target="_blank">Kaggle Notebook →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 3 -->
+         <div class="project-card">
+            <div class="project-image">
+                <img src="assets/img/project3.png" alt="Peach Tree Disease Detection" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div class="project-content">
+                <h3>Peach Tree Disease Detection</h3>
+                <p>Computer vision-based system for identifying peach tree diseases from images. Showcases practical application of CNNs for agricultural monitoring and precision farming.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">CNN</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">TensorFlow</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/M-ArslanArshad/peach-Tree-disease-detection">GitHub →</a>
+                    <a href="https://www.kaggle.com/code/marslanarshad/peach-tree-disease-detection" target="_blank">Kaggle Notebook →</a>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <!-- View All Code Button -->
+        <div style="grid-column: 1 / -1; text-align:center; margin-top:20px;">
+            <a href="https://github.com/M-ArslanArshad" class="btn btn-primary" style="padding:15px 40px; font-size:1.1em;">View All Code</a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="section-header">
+            <div class="section-label">Research</div>
+            <h2 class="section-title">Publications</h2>
+            <p class="section-subtitle">Contributing to the advancement of computer vision</p>
+        </div>
+        
+        <div class="publication-card">
+            <h3>Hybrid CNN-ViT Model for Motion-Blurred Scene-Text Image Deblurring</h3>
+            <span class="publication-status">Under Review – IET Image Processing</span>
+            <p style="color: var(--gray); margin: 15px 0;">A novel approach combining convolutional neural networks with vision transformers to address the challenging problem of motion-blurred text restoration in natural scene images.</p>
+            <a href="https://arxiv.org/abs/2511.06087">Read Preprint on arXiv →</a>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="section-header">
+            <div class="section-label">Credentials</div>
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Continuous learning and professional development</p>
+        </div>
+        
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Huawei HCIA – Artificial Intelligence</h3>
+                <span class="cert-year">2024</span>
+                <p style="color: var(--gray); font-size: 0.95em;">Industry-recognized certification in AI fundamentals and applications</p>
+                <a href="https://drive.google.com/file/d/1fzzXvVGl8QBh8SDniLoSIsN21Od4VyMA/view">view Credentials →</a>
+            </div>
+            
+            <div class="cert-card">
+                <h3>NAVTTC – AI & Deep Learning</h3>
+                <span class="cert-year">2023</span>
+                <p style="color: var(--gray); font-size: 0.95em;">Comprehensive training in artificial intelligence and deep learning techniques</p>
+                <a href="https://drive.google.com/file/d/1YN6qRjfT9w9thk6YDMaXJU1agOlrFSRe/view">view Credentials →</a>
+            </div>
+            
+            <div class="cert-card">
+                <h3>Machine Learning Specialization (coursera)</h3>
+                <span class="cert-year">2023–2024</span>
+                <ul>
+                    <li>Supervised Machine Learning: Regression and Classification (Stanford & DeepLearning.Ai)
+                    <a href="https://www.coursera.org/account/accomplishments/verify/XL9X733CSV3W">view Credentials →</a>
+                    <li>Advance Learning Algorithm (Stanford & DeepLearning.Ai)
+                    <a href="https://www.coursera.org/account/accomplishments/verify/TQ8SXVD93D7H">view Credentials →</a>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Contact</h2>
+            <p class="section-subtitle">Open to collaborations, research opportunities, and discussions</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:marslan.arshad@uet.edu.pk">marslan.arshad@uet.edu.pk</a>
+            </div>
+            
+<div class="contact-item">
+    <i class="fab fa-linkedin contact-icon"></i>
+    <h3>LinkedIn</h3>
+    <a href="https://www.linkedin.com/in/muhammad-arslan-775143261/" target="_blank">Your Name</a>
+</div>
+
+            
+            <div class="contact-item">
+    <i class="fab fa-github contact-icon"></i> <!-- GitHub icon -->
+    <h3>GitHub</h3>
+    <a href="https://github.com/M-ArslanArshad" target="_blank">M-ArslanArshad</a>
+</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Muhammad Arslan Arshad. Built with passion for AI research and education.</p>
+    </footer>
+
+</body>
+</html>
